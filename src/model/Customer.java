@@ -1,3 +1,5 @@
+package model;
+
 public class Customer {
     private String name;
     private String address;
@@ -35,7 +37,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer: " +
+        return "model.Customer: " +
                 "name= " + name + '\'' +
                 ", code= " + code;
     }

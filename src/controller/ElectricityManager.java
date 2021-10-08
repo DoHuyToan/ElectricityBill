@@ -1,3 +1,8 @@
+package controller;
+
+import model.Bill;
+import model.Customer;
+
 import java.util.ArrayList;
 
 public class ElectricityManager {

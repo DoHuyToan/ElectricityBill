@@ -1,3 +1,5 @@
+package model;
+
 public class Bill {
     private Customer customer;
     private double oldNumber;
@@ -50,7 +52,7 @@ public class Bill {
 
     @Override
     public String toString() {
-        return "Bill: " +
+        return "model.Bill: " +
                 customer.toString() +
                 ", oldNumber= " + oldNumber +
                 ", newNumber= " + newNumber +
