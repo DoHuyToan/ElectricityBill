@@ -23,7 +23,6 @@ public class Main {
             switch (choice){
                 case 1:
                     dienlucHN.addCustomer(creatCustomer());
-                    dienlucHN.displayInfoCustomer();
                     break;
                 case 2:
                     dienlucHN.displayInfoCustomer();
@@ -37,14 +36,14 @@ public class Main {
                     dienlucHN.displayInfoCustomer();
                     break;
                 case 5:
-                    dienlucHN.addBill(creatBill());
+                    creatBill(dienlucHN);
                     dienlucHN.displayInfoBill();
                     break;
                 case 6:
                     dienlucHN.displayInfoBill();
                     break;
                 case 7:
-                    dienlucHN.editBill(inputCode(), creatBill());
+                    dienlucHN.editBill(inputCode(), creatBill(dienlucHN));
                     dienlucHN.displayInfoBill();
                     break;
                 case 8:
@@ -62,27 +61,29 @@ public class Main {
                     break;
             }
         } while (choice!=0);
+    }
 
-//        Customer dinh = new Customer("Dinh", "Hà Đông", "001");
-//        Customer duy = new Customer("Duy", "Hai Bà Trưng", "002");
-//        customerArrayList.add(dinh);
-//        customerArrayList.add(duy);
-//
-//        Bill bill1 = new Bill(dinh, 200, 300, 750);
-//        Bill bill2 = new Bill(duy, 250, 400, 750);
-//        billArrayList.add(bill1);
-//        billArrayList.add(bill2);
-//
-//        System.out.println("Thêm khách");
-//        System.out.println("Xóa khách");
-//        System.out.println("Sửa khách");
-//        System.out.println("Danh sách toàn bộ model.Bill");
-//        System.out.println("Thêm bill");
-//        System.out.println("Tổng tiền của toàn bộ bill");
-//        System.out.println("Xóa bill theo code");
-//        System.out.println("Sửa bill theo code");
-//        System.out.println("Tìm model.Bill theo code Khách");
-//        System.out.println("Tổng tiền bill của 1 hộ");
+    private static Bill creatBill(ElectricityManager dienlucHN) {
+        System.out.println("Nhập code khách hàng");
+        Scanner codeCustomer = new Scanner(System.in);
+        String code = codeCustomer.nextLine();
+        Customer customer = dienlucHN.searchCustomerByCode(code);
+        if(customer != null){
+            System.out.println("Nhập số công tơ cũ");
+            Scanner inputOldNumber = new Scanner(System.in);
+            double oldNumber = inputOldNumber.nextDouble();
+            System.out.println("Nhập số công tơ mới");
+            Scanner inputNewNumber = new Scanner(System.in);
+            double newNumber = inputNewNumber.nextDouble();
+            System.out.println("Nhập đơn giá/số");
+            Scanner inputUnitPrice = new Scanner(System.in);
+            double unitPrice = inputUnitPrice.nextDouble();
+            Bill bill = new Bill(customer, oldNumber, newNumber, unitPrice);
+            dienlucHN.addBill(bill);
+            return bill;
+        }
+        else System.out.println("Không tìm thấy khách hàng");
+        return null;
     }
 
     private static void menu() {
@@ -102,6 +103,7 @@ public class Main {
     }
 
     private static String inputCode(){
+        System.out.println("Nhập mã khách hàng");
         Scanner inputCode = new Scanner(System.in);
         String code = inputCode.nextLine();
         return code;
@@ -121,19 +123,5 @@ public class Main {
         return customer;
     }
 
-    private static Bill creatBill(){
-        System.out.println("Nhập khách hànhg");
-        Customer customer = creatCustomer();
-        System.out.println("Nhập số công tơ cũ");
-        Scanner inputOldNumber = new Scanner(System.in);
-        double oldNumber = inputOldNumber.nextDouble();
-        System.out.println("Nhập số công tơ mới");
-        Scanner inputNewNumber = new Scanner(System.in);
-        double newNumber = inputNewNumber.nextDouble();
-        System.out.println("Nhập đơn giá/số");
-        Scanner inputUnitPrice = new Scanner(System.in);
-        double unitPrice = inputUnitPrice.nextDouble();
-        Bill bill = new Bill(customer, oldNumber, newNumber, unitPrice);
-        return bill;
-    }
+
 }

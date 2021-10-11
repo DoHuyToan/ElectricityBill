@@ -55,6 +55,17 @@ public class ElectricityManager {
         }
     }
 
+    public Customer searchCustomerByCode(String code){         //search Customer
+        Customer customer = null;
+        for (int i=0; i<customerArrayList.size(); i++) {
+            if(customerArrayList.get(i).getCode().equals(code)){
+                customer = customerArrayList.get(i);
+                break;
+            }
+        }
+        return customer;
+    }
+
     public void editBill(String code, Bill bill){            //sửa bill
         for (int i=0; i<billArrayList.size(); i++){
             if (billArrayList.get(i).getCustomer().getCode().equals(code))
