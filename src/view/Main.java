@@ -16,7 +16,19 @@ public class Main {
 
         int choice;
         do {
-            menu();
+            System.out.println("Menu");
+            System.out.println("1. Thêm khách hàng");
+            System.out.println("2. Hiển thị danh sách khách hàng");
+            System.out.println("3. Sửa khách hàng");
+            System.out.println("4. Xóa khách hàng");
+            System.out.println("5. Thêm bill");
+            System.out.println("6. Hiển thị danh sách Bill");
+            System.out.println("7. Sửa bill");
+            System.out.println("8. Xóa bill");
+            System.out.println("9. Tìm bill theo mã khách hàng");
+            System.out.println("10. Tổng tiền của toàn bộ Bill");
+            System.out.println("11. Tổng tiền Bill của 1 hộ");
+            System.out.println("0. Exit");
             System.out.println("Chọn Menu");
             Scanner inputChoice = new Scanner(System.in);
             choice = inputChoice.nextInt();
@@ -86,22 +98,6 @@ public class Main {
         return null;
     }
 
-    private static void menu() {
-        System.out.println("Menu");
-        System.out.println("1. Thêm khách hàng");
-        System.out.println("2. Hiển thị danh sách khách hàng");
-        System.out.println("3. Sửa khách hàng");
-        System.out.println("4. Xóa khách hàng");
-        System.out.println("5. Thêm bill");
-        System.out.println("6. Hiển thị danh sách Bill");
-        System.out.println("7. Sửa bill");
-        System.out.println("8. Xóa bill");
-        System.out.println("9. Tìm bill theo mã khách hàng");
-        System.out.println("10. Tổng tiền của toàn bộ Bill");
-        System.out.println("11. Tổng tiền Bill của 1 hộ");
-        System.out.println("0. Exit");
-    }
-
     private static String inputCode(){
         System.out.println("Nhập mã khách hàng");
         Scanner inputCode = new Scanner(System.in);
@@ -122,6 +118,4 @@ public class Main {
         Customer customer = new Customer(name, address, code);
         return customer;
     }
-
-
 }
